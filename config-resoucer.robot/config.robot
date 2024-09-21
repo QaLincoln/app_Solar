@@ -16,7 +16,7 @@ Open App_solar
     ...                         automationName=Uiautomator2
     ...                         platformName=Android
     ...                         deviceName=teste
-    ...                         app=C:/Users/ldrodrigues/Desktop/Automação_Solar/App_solar/app-production-release.apk
+    ...                         app=C:/Users/ldrodrigues/Desktop/Automação_Solar/App_solar/app-development-release.apk
     ...                         udid=emulator-5554
 Fechar app
     Run Process    adb    uninstall    ${APP_PACKAGE}           ###Excluir apk
@@ -31,7 +31,7 @@ Dado que o usuario Faça o login
     Click Element    id=test:id/button-test:id/page-Login
 
     Wait Until Element Is Visible    id=test:id/test:id/input-login-id-input
-    Input Text    id=test:id/test:id/input-login-id-input    text=93639644930
+    Input Text    id=test:id/test:id/input-login-id-input    text=07624889000127
 
     Wait Until Element Is Visible    id=test:id/button-login-id-submit
     Click Element    id=test:id/button-login-id-submit

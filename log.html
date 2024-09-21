@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0.1 (Python 3.12.4 on win32)" name="Generator">
+<meta content="Robot Framework 7.1 (Python 3.12.4 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1252,58 +1252,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -2081,25 +2071,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,29801],[],[[4,0,5,[6],[1,291,29508],[[1,7,8,0,0,0,0,0,[1,292,12824],[[0,9,10,0,11,12,0,0,[1,292,12824],[]]]],[0,13,8,0,0,0,0,0,[1,13117,11358],[[0,14,10,0,15,16,0,0,[1,13117,2295],[[13119,2,17],[15412,2,18]]],[0,19,10,0,20,21,0,0,[1,15412,666],[[16078,2,22]]],[0,14,10,0,15,21,0,0,[1,16079,97],[[16079,2,23],[16176,2,24]]],[0,19,10,0,20,25,0,0,[1,16176,769],[[16945,2,26]]],[0,27,10,0,28,29,0,0,[1,16945,75],[[16946,2,30],[17020,2,31]]],[0,19,10,0,20,32,0,0,[1,17020,568],[[17588,2,33]]],[0,14,10,0,15,32,0,0,[1,17588,75],[[17590,2,34],[17663,2,33]]],[0,19,10,0,20,35,0,0,[1,17663,1289],[[18952,2,36]]],[0,37,10,0,38,39,0,0,[1,18953,576],[[18954,2,40],[19529,2,41]]],[0,19,10,0,20,42,0,0,[1,19529,535],[[20063,2,43]]],[0,14,10,0,15,42,0,0,[1,20063,128],[[20065,2,44],[20191,2,43]]],[0,19,10,0,20,45,0,0,[1,20191,2480],[[22670,2,46]]],[0,14,10,0,15,45,0,0,[1,22671,806],[[22671,2,47],[23476,2,48]]],[0,49,10,0,50,51,0,0,[1,23476,840],[]],[0,52,10,0,53,54,0,0,[1,24317,158],[[24475,2,55]]]]],[0,56,57,0,0,0,0,0,[1,24476,248],[[0,49,10,0,50,51,0,0,[1,24476,150],[]],[0,52,10,0,53,54,0,0,[1,24626,98],[[24723,2,55]]]]],[0,58,57,0,0,0,0,0,[1,24725,334],[[0,19,10,0,20,59,0,0,[1,24725,139],[[24865,2,60]]],[0,14,10,0,15,59,0,0,[1,24865,193],[[24866,2,61],[25058,2,60]]]]],[0,62,57,0,0,0,0,0,[1,25059,3464],[[0,19,10,0,20,63,0,0,[1,25060,3312],[[28371,2,64]]],[0,65,10,0,66,67,0,0,[1,28371,151],[[28372,2,68],[28522,2,69]]]]],[2,70,8,0,0,0,0,0,[1,28522,1275],[[0,71,72,0,73,74,0,0,[1,28524,336],[[28524,2,75],[28532,2,76],[28860,2,77]]],[0,78,10,0,79,0,0,0,[1,28860,938],[]]]]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,38010],[],[[4,0,5,[6],[1,213,37796],[[1,7,8,0,0,0,0,0,[1,214,9927],[[0,9,10,0,11,12,0,0,[1,214,9926],[]]]],[0,13,8,0,0,0,0,0,[1,10141,12069],[[0,14,10,0,15,16,0,0,[1,10141,1115],[[10142,2,17],[11256,2,18]]],[0,19,10,0,20,21,0,0,[1,11256,548],[[11804,2,22]]],[0,14,10,0,15,21,0,0,[1,11804,70],[[11805,2,23],[11873,2,22]]],[0,19,10,0,20,24,0,0,[1,11873,639],[[12512,2,25]]],[0,26,10,0,27,28,0,0,[1,12512,51],[[12513,2,29],[12562,2,25]]],[0,19,10,0,20,30,0,0,[1,12563,539],[[13102,2,31]]],[0,14,10,0,15,30,0,0,[1,13102,57],[[13103,2,32],[13159,2,31]]],[0,19,10,0,20,33,0,0,[1,13159,1259],[[14418,2,34]]],[0,35,10,0,36,37,0,0,[1,14418,543],[[14419,2,38],[14961,2,39]]],[0,19,10,0,20,40,0,0,[1,14961,508],[[15469,2,41]]],[0,14,10,0,15,40,0,0,[1,15469,88],[[15470,2,42],[15558,2,41]]],[0,19,10,0,20,43,0,0,[1,15558,4981],[[20538,2,44]]],[0,14,10,0,15,43,0,0,[1,20538,87],[[20538,2,45],[20625,2,46]]],[0,47,10,0,48,49,0,0,[1,20625,209],[]],[0,50,10,0,51,52,0,0,[1,20836,1374],[[22210,2,53]]]]],[0,54,55,0,0,0,0,0,[1,22211,235],[[0,47,10,0,48,49,0,0,[1,22212,127],[]],[0,50,10,0,51,52,0,0,[1,22339,107],[[22446,2,53]]]]],[0,56,55,0,0,0,0,0,[1,22447,14721],[[0,57,10,0,58,59,0,0,[1,22447,1250],[[23696,2,60]]],[0,61,10,0,62,63,0,0,[1,23697,1311],[]],[0,14,10,0,15,59,0,0,[1,25008,715],[[25009,2,64],[25722,2,60]]],[0,50,10,0,51,65,0,0,[1,25722,1386],[[27108,2,66]]],[0,67,10,0,68,69,0,0,[1,27108,59],[[27109,2,70],[27167,2,71]]],[0,72,73,0,74,75,0,0,[1,27168,10000],[[37168,2,76]]]]],[2,77,8,0,0,0,0,0,[1,37169,839],[[0,78,79,0,80,81,0,0,[1,37169,397],[[37169,2,82],[37178,2,83],[37566,2,84]]],[0,85,10,0,86,0,0,0,[1,37567,440],[]]]]]]],[],[1,1,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Home Teste","*c:\\Users\\ldrodrigues\\Desktop\\Automação_Solar\\App_solar\\2_home_teste\\home_teste.robot","eNqzSVTIKEpNs1VKy8xJtdLX13e20g8tTi0q1s9JKcpPKcpML00t1ndJLc4uyS/Qdywtyc9NVHU2VnU0B5PG+fHB+TmJRfqOBQXxxWCWUXxGfm5qfElqcUmqPoKpV5SflF+iZEcfe2z0E+0Ad1pMqg==","*Caso de Teste 2: Fluxo de categorias","*<p>Tela home\x3c/p>","*categorias","*Open App_solar","*config","*Open Application","*AppiumLibrary","eNqNUsFOAyEQvfsVkz3XJfVo6CZGr1oTT56aWZjtTsoCYWgb/16wmu3qxQuBN+89mHno2G0jeQEET2fAGB0bzBw85AB7PpGHhxj5OIFQOlFq4REj9uw4MwmEoWrm8goevE2BLaC3wNu3Fbw6QiEwI5kDaIQx0bBpxpyj3Ct1UbcclA1GFHl1166Vcaww7UU13T+JWmGnVexudMbeEfQhWUqbZt1UKNXFdrov3dbmtOoLuyA/8DP69g/4RGIS/xaoi9u3ZaIpZNodk5ul7yTzYTE9mHlLG3SMVyIf5v11aSmSnNjkncjV3S8LpQtngY9wrGEKlURMmKaSjFQAPbA/FfsCU8o81OQJxiAZHB+o/AkhN9wK7z1ZCJ7axTPU16S7TzvbwQo=","*<a href=\"http://127.0.0.1:4723/wd/hub\">http://127.0.0.1:4723/wd/hub\x3c/a>    automationName=Uiautomator2    platformName=Android    deviceName=teste    app=C:/Users/ldrodrigues/Desktop/Automação_Solar/App_solar/app-production-release.apk    udid=emulator-5554","*Dado que o usuario Faça o login","*Click Element","*<p>Click element identified by `locator`.\x3c/p>","*id=com.android.permissioncontroller:id/permission_allow_foreground_only_button","*Clicking element 'id=com.android.permissioncontroller:id/permission_allow_foreground_only_button'.","*criteria is com.android.permissioncontroller:id/permission_allow_foreground_only_button","*Wait Until Element Is Visible","*<p>Waits until element specified with `locator` is visible.\x3c/p>","*id=test:id/button-test:id/page-Login","eNpLLsosSS3KTFTILFYoSS0uscpM0U8qLSnJz9OFcQsS01N1ffLTM/O4kklRDQAc0yHZ","*Clicking element 'id=test:id/button-test:id/page-Login'.","*criteria is test:id/button-test:id/page-Login","*id=test:id/test:id/input-login-id-input","eNpLLsosSS3KTFTILFYoSS0uscpM0YfRmXkFpSW6OfnpmXm6mSm6YC5XMokaAPQhJFs=","*Input Text","*<p>Types the given `text` into text field identified by `locator`.\x3c/p>","*id=test:id/test:id/input-login-id-input    text=93639644930","*Typing text '93639644930' into text field 'id=test:id/test:id/input-login-id-input'","*criteria is test:id/test:id/input-login-id-input","*id=test:id/button-login-id-submit","*criteria is test:id/button-login-id-submit","*Clicking element 'id=test:id/button-login-id-submit'.","*id=test:id/input-login-password","eNpLLsosSS3KTFTILFYoSS0uscpM0c/MKygt0c3JT8/M0y1ILC4uzy9K4UomUiEA7xAfAQ==","*Input Password","*<p>Types the given password into text field identified by `locator`.\x3c/p>","*id=test:id/input-login-password    text=Senha@123","*Typing password into text field 'id=test:id/input-login-password'","*criteria is test:id/input-login-password","*id=test:id/button-login-password-submit","*criteria is test:id/button-login-password-submit","*Clicking element 'id=test:id/button-login-password-submit'.","*id=com.android.permissioncontroller:id/permission_allow_button","eNpLLsosSS3KTFTILFZIzs/VS8xLKcrPTNErSC3KzSwuzszPS87PKynKz8lJLbLKTNFHiMcn5uTkl8cnlZaU5OdxJVPHHADW3jjr","*Clicking element 'id=com.android.permissioncontroller:id/permission_allow_button'.","*criteria is com.android.permissioncontroller:id/permission_allow_button","*Wait Until Page Contains","*<p>Waits until `text` appears on current page.\x3c/p>","*text=Compre produtos por categorias","*Wait Until Page Contains Element","*<p>Waits until element specified with `locator` appears on current page.\x3c/p>","*id=test:id/carousel-test:id/page-Home-title","*criteria is test:id/carousel-test:id/page-Home-title","*Quando o usuario estiver na tela home","*home_resoucer","*E o usuario clicar no botão/texto ver todos","*id=test:id/button-test:id/page-Home-header-text","*criteria is test:id/button-test:id/page-Home-header-text","*Clicking element 'id=test:id/button-test:id/page-Home-header-text'.","*Então será direcionando a tela categorias que será validada","*id=test:id/header-test:id/page-AllCategories-title","eNpLLsosSS3KTFTILFYoSS0uscpM0c9ITUxJLdKFcQsS01N1HXNynBNLUtPzizJTi3VLMktyUrmSydcLAF77LF0=","*Element Should Contain Text","*<p>Verifies element identified by <code>locator\x3c/code> contains text <code>expected\x3c/code>.\x3c/p>","*id=test:id/header-test:id/page-AllCategories-title    Categorias","*Verifying element 'id=test:id/header-test:id/page-AllCategories-title' contains text 'Categorias'.","*criteria is test:id/header-test:id/page-AllCategories-title","*Fechar app","*Run Process","*Process","*<p>Runs a process and waits for it to complete.\x3c/p>","*adb    uninstall    ${APP_PACKAGE}","*Starting process:\nadb uninstall br.com.solarbr.solarapp","*Waiting for process to complete.","*Process completed.","*Close Application","*<p>Closes the current application and also close webdriver session.\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Home Teste","*c:\\Users\\ldrodrigues\\Desktop\\Automação_Solar\\App_solar\\2_home_teste\\home_teste.robot","eNqzSVTIKEpNs1VKy8xJtdLX13e20g8tTi0q1s9JKcpPKcpML00t1ndJLc4uyS/Qdywtyc9NVHU2VnU0B5PG+fHB+TmJRfqOBQXxxWCWUXxGfm5qfElqcUmqPoKpV5SflF+iZEcfe2z0E+0Ad1pMqg==","*Caso de Teste 3: Fluxo de categorias","*<p>Clicar no botão seta (Mostrar mais)\x3c/p>","*categorias","*Open App_solar","*config","*Open Application","*AppiumLibrary","eNqNUsFOAyEQvfsVkz3XJfVo6CZGr1oTT56aWZjtTsoCYWgb/16wmu3qxQuBN+89mHno2G0jeQEET2fAGB0bzBw85AB7PpGHhxj5OIFQOlFq4REj9uw4MwmEoWrm8goevE2BLaC3wNu3Fbw6QiEwI5kDaIQx0bBpxpyj3Ct1UbcclA1GFHl1166Vcaww7UU13T+JWmGnVexudMbeEfQhWUqbZt1UKNXFdrov3dbmtOoLuyA/8DP69g/4RGIS/xaoi9u3ZaIpZNodk5ul7yTzYTE9mHlLG3SMVyIf5v11aSmSnNjkncjV3S8LpQtngY9wrGEKlURMmKaSjFQAPbA/FfsCU8o81OQJxiAZHB+o/AkhN9wK7z1ZCJ7axTPU16S7TzvbwQo=","*<a href=\"http://127.0.0.1:4723/wd/hub\">http://127.0.0.1:4723/wd/hub\x3c/a>    automationName=Uiautomator2    platformName=Android    deviceName=teste    app=C:/Users/ldrodrigues/Desktop/Automação_Solar/App_solar/app-development-release.apk    udid=emulator-5554","*Dado que o usuario Faça o login","*Click Element","*<p>Click element identified by `locator`.\x3c/p>","*id=com.android.permissioncontroller:id/permission_allow_foreground_only_button","*Clicking element 'id=com.android.permissioncontroller:id/permission_allow_foreground_only_button'.","*criteria is com.android.permissioncontroller:id/permission_allow_foreground_only_button","*Wait Until Element Is Visible","*<p>Waits until element specified with `locator` is visible.\x3c/p>","*id=test:id/button-test:id/page-Login","*criteria is test:id/button-test:id/page-Login","*Clicking element 'id=test:id/button-test:id/page-Login'.","*id=test:id/test:id/input-login-id-input","*criteria is test:id/test:id/input-login-id-input","*Input Text","*<p>Types the given `text` into text field identified by `locator`.\x3c/p>","*id=test:id/test:id/input-login-id-input    text=07624889000127","*Typing text '07624889000127' into text field 'id=test:id/test:id/input-login-id-input'","*id=test:id/button-login-id-submit","*criteria is test:id/button-login-id-submit","*Clicking element 'id=test:id/button-login-id-submit'.","*id=test:id/input-login-password","eNpLLsosSS3KTFTILFYoSS0uscpM0c/MKygt0c3JT8/M0y1ILC4uzy9K4UomUiEA7xAfAQ==","*Input Password","*<p>Types the given password into text field identified by `locator`.\x3c/p>","*id=test:id/input-login-password    text=Senha@123","*Typing password into text field 'id=test:id/input-login-password'","*criteria is test:id/input-login-password","*id=test:id/button-login-password-submit","*criteria is test:id/button-login-password-submit","*Clicking element 'id=test:id/button-login-password-submit'.","*id=com.android.permissioncontroller:id/permission_allow_button","eNpLLsosSS3KTFTILFZIzs/VS8xLKcrPTNErSC3KzSwuzszPS87PKynKz8lJLbLKTNFHiMcn5uTkl8cnlZaU5OdxJVPHHADW3jjr","*Clicking element 'id=com.android.permissioncontroller:id/permission_allow_button'.","*criteria is com.android.permissioncontroller:id/permission_allow_button","*Wait Until Page Contains","*<p>Waits until `text` appears on current page.\x3c/p>","*text=Compre produtos por categorias","*Wait Until Page Contains Element","*<p>Waits until element specified with `locator` appears on current page.\x3c/p>","*id=test:id/carousel-test:id/page-Home-title","*criteria is test:id/carousel-test:id/page-Home-title","*Quando o usuario estiver na tela home","*home_resoucer","*E o usuario clicar no botão seta &quot;mostar mais&quot;","*Wait Until Page Does Not Contain Element","*<p>Waits until element specified with `locator` disappears from current page.\x3c/p>","*${CT_BT_MOSTRAR_MAIS}","*xpath criteria: (//android.view.ViewGroup[@resource-id=\"test:id/carousel-test:id/page-Home-item\"])[4]","*Swipe By Percent","*<p>Swipe from one percent of the screen to another percent, for an optional duration. Normal swipe fails to scale for different screen resolutions, this can be avoided using percent.\x3c/p>","*90    50    10    50    1000","*Clicking element 'xpath=(//android.view.ViewGroup[@resource-id=\"test:id/carousel-test:id/page-Home-item\"])[4]'.","*${IMG_REFRIGE}","eNrdzT0KhDAQhuHeU4T0Mb0geIZFbMRidL7VAf8YR5Ljb86x/fvw5ptsc4uKQYUaFyOdrJdwnYRXWN0j2yBIY6d4rlcXBOHWGx5rhGPYacYeCj+8K9R1VkDrP/iqrFA6S+mnKv/X5wfB6XB0","*Element Should Contain Text","*<p>Verifies element identified by <code>locator\x3c/code> contains text <code>expected\x3c/code>.\x3c/p>","*${IMG_REFRIGE}    Refrigerantes","*Verifying element 'xpath=//android.widget.TextView[@resource-id=\"test:id/-label-item\" and @text=\"Refrigerantes\"]' contains text 'Refrigerantes'.","*xpath criteria: //android.widget.TextView[@resource-id=\"test:id/-label-item\" and @text=\"Refrigerantes\"]","*Sleep","*BuiltIn","*<p>Pauses the test executed for the given time.\x3c/p>","*10","*Slept 10 seconds.","*Fechar app","*Run Process","*Process","*<p>Runs a process and waits for it to complete.\x3c/p>","*adb    uninstall    ${APP_PACKAGE}","*Starting process:\nadb uninstall br.com.solarbr.solarapp","*Waiting for process to complete.","*Process completed.","*Close Application","*<p>Closes the current application and also close webdriver session.\x3c/p>"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:30","fail":0,"label":"All Tests","pass":1,"skip":0}],[{"elapsed":"00:00:30","fail":0,"label":"categorias","pass":1,"skip":0}],[{"elapsed":"00:00:30","fail":0,"id":"s1","label":"Home Teste","name":"Home Teste","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:38","fail":0,"label":"All Tests","pass":1,"skip":0}],[{"elapsed":"00:00:38","fail":0,"label":"categorias","pass":1,"skip":0}],[{"elapsed":"00:00:38","fail":0,"id":"s1","label":"Home Teste","name":"Home Teste","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1726519149302;
+window.output["baseMillis"] = 1726888120530;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 29810;
+window.output["generated"] = 38052;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
