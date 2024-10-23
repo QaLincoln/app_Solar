@@ -69,25 +69,25 @@ Caso de Teste 7: Fluxo de recomendados
     Dado que o usuario Faça o login
     Quando o usuario estiver na tela home
     E o usuario deve clicar no primeiro produto em recomendados
-    Então deverá validar a ação de clicar no primeiro produto em recomendados   
+    # Então deverá validar a ação de clicar no primeiro produto em recomendados   
 
 ### Marcas         
 
 Caso de Teste 8: Fluxo de marcas
     [Documentation]     Clicar no botão Ver todos
-    [Tags]    categorias
+    [Tags]    marcas
     Dado que o usuario Faça o login
     Quando o usuario estiver na tela home
     E o usuario deve clicar no botão/texto ver todos marcas
     Então será direcionando a tela marcas que será validada  
 
 Caso de Teste 9: Fluxo de marcas
-    [Documentation]     Clicar no botão Ver todos
-    [Tags]    categorias
+    [Documentation]     Clicar no botão seta (Mostrar mais)
+    [Tags]    marcas
     Dado que o usuario Faça o login
     Quando o usuario estiver na tela home
-    E o usuario deve clicar no botão seta "mostar mais" marcas   
-#     Então será direcionando a tela categorias que será validada
+    E o usuario deve clicar no botão seta "mostar mais" marcas  
+    Então será direcionando a tela marcas que será validada   
        
 # Caso de Teste 4: Fluxo de categorias 
 #     [Documentation]      Clicar no primeiro produto
