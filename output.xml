@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1 (Python 3.12.4 on win32)" generated="2024-10-08T13:14:13.191930" rpa="false" schemaversion="5">
-<suite id="s1" name="Home Teste" source="c:\Users\ldrodrigues\Desktop\Automação_Solar\App_solar\2_home_teste\home_teste.robot">
-<test id="s1-t1" name="Caso de Teste 1: Fluxo de carrosel primario" line="14">
-<kw name="Open App_solar" owner="config" type="SETUP">
+<robot generator="Robot 7.1 (Python 3.12.4 on win32)" generated="2024-11-01T15:43:32.409773" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Teste" source="c:\Users\ldrodrigues\Desktop\Automação_Solar\App_solar\1-teste_regressão\login_teste.robot">
+<test id="s1-t1" name="Caso de Teste 1: Testando tela login" line="8">
+<kw name="Open App_solar" owner="login_resoucer" type="SETUP">
 <kw name="Open Application" owner="AppiumLibrary">
 <arg>http://127.0.0.1:4723/wd/hub</arg>
 <arg>automationName=Uiautomator2</arg>
 <arg>platformName=Android</arg>
 <arg>deviceName=teste</arg>
-<arg>app=C:/Users/ldrodrigues/Desktop/Automação_Solar/App_solar/app-production-release .apk</arg>
+<arg>app=C:/Users/ldrodrigues/Desktop/Automação_Solar/App_solar/qa_teste_2.4.6.apk</arg>
 <arg>udid=emulator-5554</arg>
 <doc>Opens a new application to given Appium server.
 Capabilities of appium server, Android and iOS,
@@ -17,28 +17,33 @@ Please check https://appium.io/docs/en/2.1/cli/args/
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" start="2024-10-08T13:14:13.878163" elapsed="23.646841"/>
+<status status="PASS" start="2024-11-01T15:43:32.556340" elapsed="11.794152"/>
 </kw>
-<status status="PASS" start="2024-10-08T13:14:13.877164" elapsed="23.647840"/>
+<status status="PASS" start="2024-11-01T15:43:32.555805" elapsed="11.794687"/>
 </kw>
-<kw name="Dado que o usuario Faça o login" owner="config">
+<kw name="Dado que o usuario insira cpf/cnpj valido" owner="login_resoucer">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2024-11-01T15:43:46.274698" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_foreground_only_button
+criteria is com.android.permissioncontroller:id/permission_allow_foreground_only_button</msg>
+<arg>id=com.android.permissioncontroller:id/permission_allow_foreground_only_button</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2024-11-01T15:43:44.351503" elapsed="1.924196"/>
+</kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:37.527012" level="INFO">Clicking element 'id=com.android.permissioncontroller:id/permission_allow_foreground_only_button'.</msg>
-<msg time="2024-10-08T13:14:39.229908" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_foreground_only_button</msg>
+<msg time="2024-11-01T15:43:46.276698" level="INFO">Clicking element 'id=com.android.permissioncontroller:id/permission_allow_foreground_only_button'.</msg>
+<msg time="2024-11-01T15:43:46.364217" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_foreground_only_button</msg>
 <arg>id=com.android.permissioncontroller:id/permission_allow_foreground_only_button</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:37.526009" elapsed="1.703899"/>
+<status status="PASS" start="2024-11-01T15:43:46.275699" elapsed="0.088518"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-10-08T13:14:41.230080" level="INFO">Slept 2 seconds.</msg>
+<msg time="2024-11-01T15:43:48.364423" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-10-08T13:14:39.229908" elapsed="2.000172"/>
+<status status="PASS" start="2024-11-01T15:43:46.364217" elapsed="2.000206"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:44.262288" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_button
-criteria is com.android.permissioncontroller:id/permission_allow_button
-criteria is com.android.permissioncontroller:id/permission_allow_button
+<msg time="2024-11-01T15:43:51.000025" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_button
 criteria is com.android.permissioncontroller:id/permission_allow_button
 criteria is com.android.permissioncontroller:id/permission_allow_button
 criteria is com.android.permissioncontroller:id/permission_allow_button
@@ -48,193 +53,144 @@ criteria is com.android.permissioncontroller:id/permission_allow_button
 criteria is com.android.permissioncontroller:id/permission_allow_button</msg>
 <arg>id=com.android.permissioncontroller:id/permission_allow_button</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:41.230080" elapsed="3.032208"/>
+<status status="PASS" start="2024-11-01T15:43:48.364423" elapsed="2.635602"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:44.263289" level="INFO">Clicking element 'id=com.android.permissioncontroller:id/permission_allow_button'.</msg>
-<msg time="2024-10-08T13:14:44.373686" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_button</msg>
+<msg time="2024-11-01T15:43:51.001070" level="INFO">Clicking element 'id=com.android.permissioncontroller:id/permission_allow_button'.</msg>
+<msg time="2024-11-01T15:43:51.058463" level="INFO">criteria is com.android.permissioncontroller:id/permission_allow_button</msg>
 <arg>id=com.android.permissioncontroller:id/permission_allow_button</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:44.263289" elapsed="0.111397"/>
+<status status="PASS" start="2024-11-01T15:43:51.000025" elapsed="0.058438"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:44.916821" level="INFO">criteria is test:id/button-test:id/page-Login</msg>
+<msg time="2024-11-01T15:43:51.639344" level="INFO">criteria is test:id/button-test:id/page-Login
+criteria is test:id/button-test:id/page-Login</msg>
 <arg>id=test:id/button-test:id/page-Login</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:44.374686" elapsed="0.542135"/>
+<status status="PASS" start="2024-11-01T15:43:51.059861" elapsed="0.579483"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:44.918838" level="INFO">Clicking element 'id=test:id/button-test:id/page-Login'.</msg>
-<msg time="2024-10-08T13:14:44.977539" level="INFO">criteria is test:id/button-test:id/page-Login</msg>
+<msg time="2024-11-01T15:43:51.640355" level="INFO">Clicking element 'id=test:id/button-test:id/page-Login'.</msg>
+<msg time="2024-11-01T15:43:51.691961" level="INFO">criteria is test:id/button-test:id/page-Login</msg>
 <arg>id=test:id/button-test:id/page-Login</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:44.917821" elapsed="0.059718"/>
+<status status="PASS" start="2024-11-01T15:43:51.639344" elapsed="0.052617"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:45.658476" level="INFO">criteria is test:id/test:id/input-login-id-input
-criteria is test:id/test:id/input-login-id-input</msg>
-<arg>id=test:id/test:id/input-login-id-input</arg>
+<msg time="2024-11-01T15:43:52.420924" level="INFO">xpath criteria: //android.widget.EditText[@text="Seu CPF/CNPJ aqui"]</msg>
+<arg>${CAMPO_CPF/CNPJ}</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:44.978538" elapsed="0.679938"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:45.658980" level="INFO">Typing text '93639644930' into text field 'id=test:id/test:id/input-login-id-input'</msg>
-<msg time="2024-10-08T13:14:45.714665" level="INFO">criteria is test:id/test:id/input-login-id-input</msg>
-<arg>id=test:id/test:id/input-login-id-input</arg>
-<arg>text=93639644930</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:45.658980" elapsed="0.056188"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:46.265666" level="INFO">criteria is test:id/button-login-id-submit</msg>
-<arg>id=test:id/button-login-id-submit</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:45.715168" elapsed="0.550498"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:46.265666" level="INFO">Clicking element 'id=test:id/button-login-id-submit'.</msg>
-<msg time="2024-10-08T13:14:46.327756" level="INFO">criteria is test:id/button-login-id-submit</msg>
-<arg>id=test:id/button-login-id-submit</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:46.265666" elapsed="0.062090"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:47.449275" level="INFO">criteria is test:id/input-login-password
-criteria is test:id/input-login-password</msg>
-<arg>id=test:id/input-login-password</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:46.327756" elapsed="1.122521"/>
+<status status="PASS" start="2024-11-01T15:43:51.691961" elapsed="0.728963"/>
 </kw>
 <kw name="Input Password" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:47.450277" level="INFO">Typing password into text field 'id=test:id/input-login-password'</msg>
-<msg time="2024-10-08T13:14:48.002661" level="INFO">criteria is test:id/input-login-password</msg>
-<arg>id=test:id/input-login-password</arg>
+<msg time="2024-11-01T15:43:52.421923" level="INFO">Typing password into text field 'xpath=//android.widget.EditText[@text="Seu CPF/CNPJ aqui"]'</msg>
+<msg time="2024-11-01T15:43:52.519989" level="INFO">xpath criteria: //android.widget.EditText[@text="Seu CPF/CNPJ aqui"]</msg>
+<arg>${CAMPO_CPF/CNPJ}</arg>
+<arg>text=75863121840</arg>
+<doc>Types the given password into text field identified by `locator`.</doc>
+<status status="PASS" start="2024-11-01T15:43:52.421923" elapsed="0.098066"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2024-11-01T15:43:53.165068" level="INFO">xpath criteria: //android.widget.TextView[@text="Entrar"]</msg>
+<arg>${BUTTON_ENTRAR}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2024-11-01T15:43:52.519989" elapsed="0.645079"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2024-11-01T15:43:53.166590" level="INFO">Clicking element 'xpath=//android.widget.TextView[@text="Entrar"]'.</msg>
+<msg time="2024-11-01T15:43:53.287866" level="INFO">xpath criteria: //android.widget.TextView[@text="Entrar"]</msg>
+<arg>${BUTTON_ENTRAR}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2024-11-01T15:43:53.166080" elapsed="0.121786"/>
+</kw>
+<status status="PASS" start="2024-11-01T15:43:44.351503" elapsed="8.936363"/>
+</kw>
+<kw name="Quando o usuario insira senha valida" owner="login_resoucer">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2024-11-01T15:43:54.300893" level="INFO">xpath criteria: //android.widget.EditText[@text="Sua senha aqui"]</msg>
+<arg>${CAMPO_SENHA}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2024-11-01T15:43:53.288868" elapsed="1.012025"/>
+</kw>
+<kw name="Input Password" owner="AppiumLibrary">
+<msg time="2024-11-01T15:43:54.301892" level="INFO">Typing password into text field 'Xpath=//android.widget.EditText[@text="Sua senha aqui"]'</msg>
+<msg time="2024-11-01T15:43:54.374195" level="INFO">xpath criteria: //android.widget.EditText[@text="Sua senha aqui"]</msg>
+<arg>${CAMPO_SENHA}</arg>
 <arg>text=Senha@123</arg>
 <doc>Types the given password into text field identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:47.450277" elapsed="0.552384"/>
+<status status="PASS" start="2024-11-01T15:43:54.300893" elapsed="0.073302"/>
 </kw>
+<status status="PASS" start="2024-11-01T15:43:53.288868" elapsed="1.085327"/>
+</kw>
+<kw name="E click no botão entrar" owner="login_resoucer">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:48.535947" level="INFO">criteria is test:id/button-login-password-submit</msg>
-<arg>id=test:id/button-login-password-submit</arg>
+<msg time="2024-11-01T15:43:54.913318" level="INFO">xpath criteria: //android.widget.TextView[@text="Entrar"]</msg>
+<arg>${BUTTON_ENTRAR}</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:48.002661" elapsed="0.533286"/>
+<status status="PASS" start="2024-11-01T15:43:54.375196" elapsed="0.538122"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:48.535947" level="INFO">Clicking element 'id=test:id/button-login-password-submit'.</msg>
-<msg time="2024-10-08T13:14:48.594523" level="INFO">criteria is test:id/button-login-password-submit</msg>
-<arg>id=test:id/button-login-password-submit</arg>
+<msg time="2024-11-01T15:43:54.914330" level="INFO">Clicking element 'xpath=//android.widget.TextView[@text="Entrar"]'.</msg>
+<msg time="2024-11-01T15:43:55.009894" level="INFO">xpath criteria: //android.widget.TextView[@text="Entrar"]</msg>
+<arg>${BUTTON_ENTRAR}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:48.535947" elapsed="0.058576"/>
+<status status="PASS" start="2024-11-01T15:43:54.913318" elapsed="0.096576"/>
 </kw>
-<kw name="Wait Until Page Contains" owner="AppiumLibrary">
-<arg>text=Compre produtos por categorias</arg>
-<doc>Waits until `text` appears on current page.</doc>
-<status status="PASS" start="2024-10-08T13:14:48.594523" elapsed="3.403333"/>
+<status status="PASS" start="2024-11-01T15:43:54.374195" elapsed="0.635699"/>
 </kw>
-<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:52.281574" level="INFO">criteria is test:id/carousel-test:id/page-Home-title</msg>
-<arg>id=test:id/carousel-test:id/page-Home-title</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<status status="PASS" start="2024-10-08T13:14:51.997856" elapsed="0.283718"/>
-</kw>
-<status status="PASS" start="2024-10-08T13:14:37.526009" elapsed="14.756591"/>
-</kw>
-<kw name="Quando o usuario estiver na tela home" owner="home_resoucer">
-<kw name="Wait Until Page Contains" owner="AppiumLibrary">
-<arg>text=Compre produtos por categorias</arg>
-<doc>Waits until `text` appears on current page.</doc>
-<status status="PASS" start="2024-10-08T13:14:52.282600" elapsed="0.098939"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:52.436545" level="INFO">criteria is test:id/carousel-test:id/page-Home-title</msg>
-<arg>id=test:id/carousel-test:id/page-Home-title</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<status status="PASS" start="2024-10-08T13:14:52.381539" elapsed="0.056005"/>
-</kw>
-<status status="PASS" start="2024-10-08T13:14:52.282600" elapsed="0.154944"/>
-</kw>
-<kw name="E o usuario deve clicar na primeira imagem do carrossel 1" owner="home_resoucer">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-10-08T13:14:52.437544" level="INFO">${c1} = android=new UiSelector().resourceId("test:id/image-carousel-banners-test:id/page-Home").instance(0)</msg>
-<var>${c1}</var>
-<arg>android=new UiSelector().resourceId("test:id/image-carousel-banners-test:id/page-Home").instance(0)</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-10-08T13:14:52.437544" elapsed="0.000000"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<arg>${c1}</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2024-10-08T13:14:52.437544" elapsed="0.039641"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:52.478203" level="INFO">Clicking element 'android=new UiSelector().resourceId("test:id/image-carousel-banners-test:id/page-Home").instance(0)'.</msg>
-<arg>${c1}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2024-10-08T13:14:52.477185" elapsed="0.068722"/>
-</kw>
+<kw name="Então sera direcionado a tela home" owner="login_resoucer">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-10-08T13:14:54.547188" level="INFO">Slept 2 seconds.</msg>
+<msg time="2024-11-01T15:43:57.015222" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-10-08T13:14:52.546915" elapsed="2.000273"/>
+<status status="PASS" start="2024-11-01T15:43:55.014894" elapsed="2.000328"/>
 </kw>
-<status status="PASS" start="2024-10-08T13:14:52.437544" elapsed="2.109644"/>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>Buscar no SOLAR +</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" start="2024-11-01T15:43:57.015222" elapsed="0.762258"/>
 </kw>
-<kw name="Então será direcionando a tela que será validada" owner="home_resoucer">
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-10-08T13:14:56.549243" level="INFO">Slept 2 seconds.</msg>
-<arg>2</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-10-08T13:14:54.548966" elapsed="2.000277"/>
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<msg time="2024-11-01T15:43:57.850322" level="INFO">criteria is test:id/input-app-header</msg>
+<arg>id=test:id/input-app-header</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-01T15:43:57.777480" elapsed="0.072842"/>
 </kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-10-08T13:14:56.550260" level="INFO">${c1} = android=new UiSelector().resourceId("test:id/image-carousel-banners-test:id/page-Home").instance(0)</msg>
-<var>${c1}</var>
-<arg>android=new UiSelector().resourceId("test:id/image-carousel-banners-test:id/page-Home").instance(0)</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-10-08T13:14:56.549243" elapsed="0.001017"/>
+<status status="PASS" start="2024-11-01T15:43:55.014894" elapsed="2.835428"/>
 </kw>
-<kw name="Page Should Not Contain Element" owner="AppiumLibrary">
-<msg time="2024-10-08T13:14:56.587881" level="INFO">Current page not contains element 'android=new UiSelector().resourceId("test:id/image-carousel-banners-test:id/page-Home").instance(0)'.</msg>
-<arg>${c1}</arg>
-<doc>Verifies that current page not contains `locator` element.</doc>
-<status status="PASS" start="2024-10-08T13:14:56.550260" elapsed="0.037621"/>
-</kw>
-<status status="PASS" start="2024-10-08T13:14:54.547950" elapsed="2.039931"/>
-</kw>
-<kw name="Fechar app" owner="config" type="TEARDOWN">
+<kw name="Fechar app" owner="login_resoucer" type="TEARDOWN">
 <kw name="Run Process" owner="Process">
-<msg time="2024-10-08T13:14:56.588887" level="INFO">Starting process:
+<msg time="2024-11-01T15:43:57.852337" level="INFO">Starting process:
 adb uninstall br.com.solarbr.solarapp</msg>
-<msg time="2024-10-08T13:14:56.593686" level="INFO">Waiting for process to complete.</msg>
-<msg time="2024-10-08T13:14:56.953774" level="INFO">Process completed.</msg>
+<msg time="2024-11-01T15:43:57.864920" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-11-01T15:43:58.374600" level="INFO">Process completed.</msg>
 <arg>adb</arg>
 <arg>uninstall</arg>
 <arg>${APP_PACKAGE}</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<status status="PASS" start="2024-10-08T13:14:56.587881" elapsed="0.366488"/>
+<status status="PASS" start="2024-11-01T15:43:57.852337" elapsed="0.522263"/>
 </kw>
 <kw name="Close Application" owner="AppiumLibrary">
 <doc>Closes the current application and also close webdriver session.</doc>
-<status status="PASS" start="2024-10-08T13:14:56.954369" elapsed="1.348207"/>
+<status status="PASS" start="2024-11-01T15:43:58.374600" elapsed="0.544430"/>
 </kw>
-<status status="PASS" start="2024-10-08T13:14:56.587881" elapsed="1.714695"/>
+<status status="PASS" start="2024-11-01T15:43:57.851339" elapsed="1.067691"/>
 </kw>
-<doc>Clicar no primeira imagem do carrossel</doc>
-<tag>carrossel1</tag>
-<status status="PASS" start="2024-10-08T13:14:13.876164" elapsed="44.426412"/>
+<doc>Tela login</doc>
+<tag>login</tag>
+<status status="PASS" start="2024-11-01T15:43:32.554804" elapsed="26.364226"/>
 </test>
-<status status="PASS" start="2024-10-08T13:14:13.198487" elapsed="45.104089"/>
+<status status="PASS" start="2024-11-01T15:43:32.413776" elapsed="26.507580"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">carrossel1</stat>
+<stat pass="1" fail="0" skip="0">login</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Home Teste">Home Teste</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Login Teste">Login Teste</stat>
 </suite>
 </statistics>
 <errors>
