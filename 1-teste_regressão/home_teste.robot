@@ -1,7 +1,7 @@
 *** Settings ***
 
-Resource        ../config-resoucer.robot/config.robot
-Resource        ../config-resoucer.robot/home_resoucer.robot
+Resource        ../config-resoucer/config.robot
+Resource        ../config-resoucer/home_resoucer.robot
 Test Setup       Open App_solar    
 Test Teardown    Fechar app
 
